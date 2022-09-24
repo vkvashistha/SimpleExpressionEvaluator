@@ -3,6 +3,8 @@ package com.geofriend.expressionevaluator;
 import org.junit.Assert;
 import org.testng.annotations.Test;
 
+import java.util.HashMap;
+
 @Test
 public class SimpleExpressionEvaluatorTest {
     public void testMathOperators() {
@@ -66,5 +68,15 @@ public class SimpleExpressionEvaluatorTest {
     // Test Case Failing
     public void testCompoundedLogicalExpressionAndMathematicalExpression() {
         Assert.assertEquals("true", SimpleExpressionEvaluator.evaluate("(1+2)>2"));
+    }
+
+    public void testLogicalExpressionWithSymbolTable() {
+        HashMap<String, Object> st = new HashMap<>();
+        st.put("a","2");
+        st.put("b","3");
+        Assert.assertEquals("true", SimpleExpressionEvaluator.evaluate("(a>b)||(b>a)",st));
+        Assert.assertEquals("true", SimpleExpressionEvaluator.evaluate("(b>a)||(a>b)",st));
+        Assert.assertEquals("false", SimpleExpressionEvaluator.evaluate("(a>b)||(b<a)",st));
+        Assert.assertEquals("true", SimpleExpressionEvaluator.evaluate("(a<b)||(b>a)",st));
     }
 }
