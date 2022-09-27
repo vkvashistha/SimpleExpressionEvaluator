@@ -67,7 +67,9 @@ public class SimpleExpressionEvaluatorTest {
 
     // Test Case Failing
     public void testCompoundedLogicalExpressionAndMathematicalExpression() {
-        Assert.assertEquals("true", SimpleExpressionEvaluator.evaluate("(1+2)>2"));
+
+        Assert.assertEquals("false", SimpleExpressionEvaluator.evaluate("(2+(1+1))>5"));
+        Assert.assertEquals("true", SimpleExpressionEvaluator.evaluate("(2+(1+1))>3"));
     }
 
     public void testLogicalExpressionWithSymbolTable() {

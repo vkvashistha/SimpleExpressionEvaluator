@@ -105,19 +105,17 @@ public class SimpleExpressionEvaluator {
                     op = stack.pop();
                 }
                 switch (op) {
-                    case "(": {
+                    case "(" -> {
                         stack.push(rightOperand);
-                        break;
                     }
-                    case "!": {
+                    case "!" -> {
                         if (!stack.isEmpty()) {
                             stack.pop();
                         }
                         String result = evaluate(data, "", op, rightOperand);
                         stack.push(result);
-                        break;
                     }
-                    default: {
+                    default -> {
                         String leftOperand = "";
                         if (!stack.isEmpty()) {
                             leftOperand = stack.pop();
