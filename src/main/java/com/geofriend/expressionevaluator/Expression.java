@@ -247,6 +247,11 @@ public class Expression {
         public String asString() {
             return result;
         }
+
+        @Override
+        public String toString() {
+            return result;
+        }
     }
 
     public static class Builder {
