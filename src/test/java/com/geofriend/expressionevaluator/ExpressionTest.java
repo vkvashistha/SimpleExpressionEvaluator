@@ -33,7 +33,7 @@ import static com.geofriend.expressionevaluator.Expression.eval;
 @Test
 public class ExpressionTest {
     public void testMathOperators() {
-        Assert.assertEquals("5.0", eval("2+3").asString());
+        Assert.assertEquals(5, eval("2+3").asInt());
         Assert.assertEquals("1.0", eval("3-2").asString());
         Assert.assertEquals("6.0", eval("2*3").asString());
         Assert.assertEquals("2.0", eval("4/2").asString());

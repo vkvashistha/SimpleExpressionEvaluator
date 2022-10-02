@@ -256,7 +256,7 @@ public class Expression {
         }
 
         public int asInt() {
-            return Integer.parseInt(result);
+            return (int)Double.parseDouble(result);
         }
 
         public double asDouble() {
