@@ -27,9 +27,9 @@ import java.util.*;
 
 public class Expression {
     private static final List<String> reservedTokens =
-            Arrays.asList("(", ")", "==", "&&", "||", "<", ">", "!", "<=", ">=", "!=", "+", "-", "/", "*");
+            Arrays.asList("(", ")", "==", "&&", "||", "<", ">", "!", "<=", ">=", "!=", "+", "-", "/", "*", "%", "^");
     private static final List<String> binaryOperators =
-            Arrays.asList("==", "&&", "||", "<", ">", "!", "<=", ">=", "!=", "+", "-", "/", "*");
+            Arrays.asList("==", "&&", "||", "<", ">", "!", "<=", ">=", "!=", "+", "-", "/", "*", "%", "^");
     private static final List<String> unaryOperators =
             Arrays.asList("!", "-");
 
@@ -104,8 +104,8 @@ public class Expression {
     private static List<String> tokenize(String expression) {
 
         List<String> reservedTokens =
-                Arrays.asList("(", ")", "==", "&&", "||", "<", ">", "!", "<=", ">=", "!=", "+", "/", "*", "-");
-        List<String> operatorSymbols = Arrays.asList("(", ")", "=", "&", "|", "<", ">", "!", "+", "/", "*", "-");
+                Arrays.asList("(", ")", "==", "&&", "||", "<", ">", "!", "<=", ">=", "!=", "+", "/", "*", "-", "%", "^");
+        List<String> operatorSymbols = Arrays.asList("(", ")", "=", "&", "|", "<", ">", "!", "+", "/", "*", "-", "%", "^");
         ArrayList<String> tokens = new ArrayList<String>();
         StringBuilder operand = new StringBuilder();
         for (char ch : expression.toCharArray()) {
@@ -209,6 +209,18 @@ public class Expression {
             case "/":
                 if (areBothOperandNumeric) {
                     return String.valueOf(Double.parseDouble(leftValue) / Double.parseDouble(rightValue));
+                } else return "0";
+
+            case "%":
+                if (areBothOperandNumeric) {
+                    double left = Double.parseDouble(leftValue);
+                    double right = Double.parseDouble(rightValue);
+                    return String.valueOf(left - (long)(left / right) * right);
+                } else return "0";
+
+            case "^":
+                if (areBothOperandNumeric) {
+                    return String.valueOf(Math.pow(Double.parseDouble(leftValue), Double.parseDouble(rightValue)));
                 } else return "0";
 
             case "&&":
