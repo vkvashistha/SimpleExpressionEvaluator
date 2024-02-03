@@ -1,10 +1,12 @@
 # Simple Expression Evaluator
 Similar to Javascript eval(), this library evaluate boolean expressions or simple mathematical expressions with variables (or Symbol table) support. Following operators are supported:-  
-'<', '>', '<=', '>=', '==', '!=', '+', '-', '*', '/', '&&', '||', '!'
+'<', '>', '<=', '>=', '==', '!=', '+', '-', '*', '/', '%', '^', '&&', '||', '!'
 ## Usage
 ```
 Expression.eval("1+2").asString(); // returns "3.0"
 Expression.eval("1+2").asInt(); // returns 3
+Expression.eval("5^2").asDouble(); // returns 25.0
+Expression.eval("5%2").asDouble(); // returns 1.0
 Expression.eval("2>3").asString(); // returns "false"
 Expression.eval("2>3").asBoolean(); // returns false
 Expression.eval("(3>2)||((2<4)&&(2>1))").asString(); // returns "true"

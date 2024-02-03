@@ -40,6 +40,7 @@ public class ExpressionTest {
         Assert.assertEquals("25.0", eval("5^2").asString());
         Assert.assertEquals("1.4142135623730951", eval("2^(1/2)").asString());
         Assert.assertEquals("1.0999999999999996", eval("5.5%2.2").asString());
+        Assert.assertEquals("1.0", eval("5%2").asString());
     }
 
     public void testPureInequalityComparisonForPositiveNumbers() {
